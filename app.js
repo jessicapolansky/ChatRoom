@@ -1,21 +1,31 @@
 const app = require('express')();
 const http = require('http').Server(app);
 const io = require('socket.io')(http);
+var people = {};
 
 app.get('/', function(req, res){
 res.sendFile(__dirname + '/views/chat.html');
 });
 
-io.on('connection', function(socket){
-    io.emit('enter');
-  socket.on('disconnect', function(socket){
+io.on('connection', function(client){
+    client.on("enter", function(name){
+      console.log(people);
+      console.log(client);
+		client.id = name;
+		io.emit("update", "You have connected to the server.");
+		io.sockets.emit("update", name + " has joined the server.");
+		io.sockets.emit("update-people", people);
+	});
+  client.on('disconnect', function(client){
     io.emit('leave');
   });
 });
 
-io.on('connection', function(socket){
-  socket.on('chat message', function(msg){
-    io.emit('chat message', msg);
+io.on('connection', function(client){
+  client.on('chat message', function(msg){
+    console.log(people);
+    console.log(client.id);
+    io.emit('chat message', client.id, msg);
   });
 });
 
