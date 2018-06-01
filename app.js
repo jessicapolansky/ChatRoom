@@ -1,6 +1,14 @@
+const express = require('express');
 const app = require('express')();
 const http = require('http').Server(app);
 const io = require('socket.io')(http);
+const nunjucks = require('nunjucks');
+app.use(express.static('public'));
+nunjucks.configure('views', {
+  autoescape: true,
+  express: app,
+  noCache: true
+});
 var people = {};
 
 app.get('/', function(req, res){

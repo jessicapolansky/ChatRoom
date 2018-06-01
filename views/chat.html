@@ -1,11 +1,22 @@
 <!doctype html>
 <html>
   <head>
+        <link rel="stylesheet" href="/chat.css" type="text/css" media="all">
     <title>The Chatroom</title>
     </head>
     <body>
-      <!--<p id="typing" onkeypress="myFunction()">Someone is typing a message</p>-->
-        <ul id="messages"></ul>
+<!--???-->
+<div class="row">
+  <div class="span2">
+  	<ul id="people" class="unstyled"></ul>
+  </div>
+  <div class="span4">
+  	<ul id="msgs" class="unstyled">
+  </div>
+</div>
+</div>
+<!--???-->
+<ul id="messages"></ul>
         <form action="">
              <input id="m" autocomplete="off" /><button>Send</button>
         </form>
