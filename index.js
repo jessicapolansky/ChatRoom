@@ -1,1 +1,0 @@
-var marked = require('marked');
