@@ -20,7 +20,7 @@ io.on('connection', function(socket){
 });
 
 var PORT = process.env.PORT || 8080;
-app.listen(PORT, function () {
+http.listen(PORT, function () {
   console.log('Listening on port ' + PORT);
 });
 // http.listen(8080, function(){
