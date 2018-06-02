@@ -51,6 +51,16 @@
         x.style.display = "none";
     }
   }
+  $("#enter").click(function(){
+			var name = $("#name").val();
+			if (name != "") {
+				socket.emit("enter", name);
+				$("#login").detach();
+				$("#chat").show();
+				$("#msg").focus();
+				ready = true;
+			}
+		});
   });
 </script>
 
