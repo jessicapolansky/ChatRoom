@@ -17,8 +17,6 @@ res.sendFile(__dirname + '/views/chat.html');
 
 io.on('connection', function(client){
     client.on("enter", function(name){
-      console.log(people);
-      console.log(client);
 		client.id = name;
 		io.emit("update", "You have connected to the server.");
 		io.sockets.emit("update", name + " has joined the server.");
@@ -32,8 +30,9 @@ io.on('connection', function(client){
 io.on('connection', function(client){
   client.on('chat message', function(msg){
     console.log(people);
-    console.log(client.id);
-    io.emit('chat message', client.id, msg);
+    var namelong = client.id;
+    var name = namelong.substring(0,7);
+    io.emit('chat message', name, msg);
   });
 });
 
