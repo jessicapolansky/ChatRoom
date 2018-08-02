@@ -1,2 +1,5 @@
-language: python,
+language: node_js
+node_js:
+  - "iojs"
+  - "7"
 install: true
